@@ -1,0 +1,6 @@
+{
+  "name": "laya",
+  "version": "0.1.0",
+  "description": "Local System One decision engine: typed choice/score/yes-no judgments with calibrated probabilities, zero-cost on local CPU/GPU",
+  "harnesses": ["claude-code", "opencode", "openclaude"]
+}
