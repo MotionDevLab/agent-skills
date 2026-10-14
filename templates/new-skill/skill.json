@@ -1,0 +1,6 @@
+{
+  "name": "TODO-skill-name",
+  "version": "0.1.0",
+  "description": "TODO one-line description, mirrors SKILL.md frontmatter",
+  "harnesses": ["claude-code", "opencode", "openclaude"]
+}

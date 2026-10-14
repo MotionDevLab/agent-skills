@@ -1,0 +1,10 @@
+{
+  "repo": "MotionDevLab/agent-skills",
+  "version": "0.1.0",
+  "skills": [
+    {
+      "name": "laya",
+      "path": "skills/laya"
+    }
+  ]
+}

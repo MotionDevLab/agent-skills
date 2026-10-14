@@ -1,0 +1,20 @@
+# Model weights (downloaded at install time, never committed)
+weights/
+*.bin
+*.gguf
+*.onnx
+
+# Python
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+
+# Node (installer shims, if any)
+node_modules/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
