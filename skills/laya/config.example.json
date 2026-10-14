@@ -1,0 +1,13 @@
+{
+  "model_id": "qwen2.5-1.5b-instruct",
+  "comment": "Pinned default: small multilingual instruction model for local typed judgments. Copy to config.json to pin your own.",
+  "ollama_model": "qwen2.5:1.5b",
+  "gguf_file": "qwen2.5-1.5b-instruct-q4_k_m.gguf",
+  "gguf_url": "https://huggingface.co/Qwen/Qwen2.5-1.5B-Instruct-GGUF/resolve/main/qwen2.5-1.5b-instruct-q4_k_m.gguf",
+  "gguf_mirrors": [
+    "https://hf-mirror.com/Qwen/Qwen2.5-1.5B-Instruct-GGUF/resolve/main/qwen2.5-1.5b-instruct-q4_k_m.gguf"
+  ],
+  "gguf_sha256": "",
+  "context_window": 4096,
+  "languages": ["en", "de", "fr", "es", "lv", "ru", "ar", "zh", "ja", "hi"]
+}
