@@ -15,9 +15,9 @@ WHAT_IF=0
 
 while [ $# -gt 0 ]; do
   case "$1" in
-    --skills) SKILLS="$2"; shift 2 ;;
+    --skills) SKILLS="${2:?ERROR: --skills needs a value}"; shift 2 ;;
     --skills=*) SKILLS="${1#--skills=}"; shift ;;
-    --harness) HARNESS="$2"; shift 2 ;;
+    --harness) HARNESS="${2:?ERROR: --harness needs a value}"; shift 2 ;;
     --harness=*) HARNESS="${1#--harness=}"; shift ;;
     --no-model) NO_MODEL=1; shift ;;
     --what-if) WHAT_IF=1; shift ;;
@@ -33,7 +33,7 @@ REGISTRY="$REPO_ROOT/skill.json"
 
 fail() { echo "ERROR: $1" >&2; exit 2; }
 
-command -v python3 >/dev/null 2>&1 || true
+command -v python3 >/dev/null 2>&1 || fail "python3 is required (registry parsing + model bootstrap). Install Python 3.10+."
 [ -f "$REGISTRY" ] || fail "registry not found: $REGISTRY (run from a full repo clone)"
 
 # Registered skill names and paths (skill.json is the source of truth).
@@ -45,6 +45,7 @@ if [ "$SKILLS" = "all" ]; then
 else
   WANTED="$(echo "$SKILLS" | tr ',' ' ')"
 fi
+[ -n "$WANTED" ] || fail "no skills selected (--skills resolved to an empty list)"
 for name in $WANTED; do
   registered_names | tr ' ' '\n' | grep -qx "$name" || fail "unknown skill '$name' (registered: $(registered_names))"
 done
@@ -73,8 +74,10 @@ if [ "$HARNESS" = "auto" ]; then
 elif [ "$HARNESS" = "all" ]; then
   TARGETS="claude opencode openclaude"
 else
-  harness_dir "$HARNESS" >/dev/null 2>&1 || fail "unknown harness '$HARNESS'"
-  TARGETS="$HARNESS"
+  case "$HARNESS" in
+    claude|opencode|openclaude) TARGETS="$HARNESS" ;;
+    *) fail "unknown harness '$HARNESS' (use auto|claude|opencode|openclaude|all)" ;;
+  esac
 fi
 
 python_ok() {

@@ -47,7 +47,7 @@ calling code, not in this file.
 3. Order is fixed: Ollama, then llama.cpp. Do not add cloud fallbacks to this skill; cloud escalation is the `jev` skill's job.
 
 Setup and model download: `python scripts/laya-setup.py --download` then `--verify`.
-Runtime entrypoint: `scripts/laya-run.py` (lands with the bootstrap task).
+Runtime entrypoint: `scripts/laya-run.py` (planned; until it lands, `laya-setup.py --verify` is the smoke test).
 
 ## Examples
 

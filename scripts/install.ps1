@@ -44,6 +44,9 @@ if ($Skills -eq "all") {
 } else {
   $wanted = $Skills -split "," | ForEach-Object { $_.Trim() } | Where-Object { $_ -ne "" }
 }
+if (@($wanted).Count -eq 0) {
+  Fail "no skills selected (-Skills resolved to an empty list)"
+}
 foreach ($name in $wanted) {
   if (-not $registered.ContainsKey($name)) {
     Fail "unknown skill '$name' (registered: $($registered.Keys -join ', '))"
@@ -142,6 +145,11 @@ foreach ($h in $targets) {
       Write-Output "already-installed: [$h] $name"
       $skipped++
       continue
+    }
+    $dangling = Get-Item -LiteralPath $link -ErrorAction SilentlyContinue
+    if ($dangling) {
+      Remove-Item -Force -LiteralPath $link
+      Write-Output "relinking (stale link removed): [$h] $name"
     }
     try {
       New-Item -ItemType SymbolicLink -Path $link -Target $source | Out-Null
