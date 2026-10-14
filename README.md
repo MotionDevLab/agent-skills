@@ -1,5 +1,7 @@
 # agent-skills
 
+![skills](https://img.shields.io/badge/skills-laya%20%7C%20jev-blue) ![harnesses](https://img.shields.io/badge/harnesses-claude%20%7C%20opencode%20%7C%20openclaude-green) ![license](https://img.shields.io/badge/license-MIT-lightgrey)
+
 Harness-agnostic agent skills by MotionDevLab. One repo, every harness, free-local-first.
 
 Skills ship as plain folders (`skills/<name>/` with `SKILL.md` + `skill.json`) that load
@@ -32,7 +34,7 @@ curl -fsSL https://raw.githubusercontent.com/MotionDevLab/agent-skills/main/scri
 
 What it does: detects OS, ensures Python 3.10+, downloads the Laya model weights
 (`--NoModel` skips this), then symlinks-or-copies each skill into every harness it finds
-(`~/.claude/skills`, `~/.config/opencode/skills`, `.agents/skills`). Re-running is safe:
+(`~/.claude/skills`, `~/.config/opencode/skills`, `~/.openclaude/skills`). Re-running is safe:
 already-installed skills are reported, not duplicated. Details: `docs/INSTALL.md`.
 
 ## Add a skill in 3 steps
