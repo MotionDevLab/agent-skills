@@ -1,0 +1,6 @@
+{
+  "name": "jev",
+  "version": "0.1.0",
+  "description": "TypeSafe Jev: very-cheap paid cloud System One judgments (choice/score/noul) for low-confidence, high-stakes, or multilingual-escalation cases",
+  "harnesses": ["claude-code", "opencode", "openclaude"]
+}

@@ -5,6 +5,10 @@
     {
       "name": "laya",
       "path": "skills/laya"
+    },
+    {
+      "name": "jev",
+      "path": "skills/jev"
     }
   ]
 }
